@@ -20,17 +20,28 @@ func Procesamiento(input []byte) (map[string]string, error) {
 			break
 		}
 
-		tipo := inputSting[0:3]
-		if tipo == "A05" || tipo == "N23" {
+		tipo := inputSting[0:1]
+		if tipo == "A" || tipo == "N" {
+
+			campo := inputSting[1:3]
+			_, err1 := strconv.Atoi(campo)
+			if err1 != nil {
+				return nil, errors.New("El numero de campo no es numerico")
+			}
 
 			largo := inputSting[3:5]
-			i, err := strconv.Atoi(largo)
-			if err != nil {
+			i, err2 := strconv.Atoi(largo)
+			if err2 != nil {
 				return nil, errors.New("El largo del valor no es numerico")
 			}
+
+			if len(inputSting) < (5 + i) {
+				return nil, errors.New("El largo especificado del campo es mayor a la cadena enviada")
+			}
+
 			dato := inputSting[5 : 5+i]
 
-			if tipo == "N23" {
+			if tipo == "N" {
 				if _, err := strconv.Atoi(dato); err != nil {
 					return nil, errors.New("El valor no corresponde a un valor numerico")
 				}
