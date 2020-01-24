@@ -1,4 +1,4 @@
-package tlv
+package main
 
 type tlvTest struct {
 	description string

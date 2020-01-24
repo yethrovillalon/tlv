@@ -1,9 +1,31 @@
-package tlv
+package main
 
 import (
 	"errors"
+	"fmt"
+	"os"
 	"strconv"
 )
+
+func main() {
+
+	arg := os.Args[1]
+
+	if len(arg) <= 0 {
+		fmt.Println("Debe ingresar un argumento con el byte de entrada")
+		os.Exit(1)
+	}
+
+	m, err := Procesamiento([]byte(arg))
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	for k, v := range m {
+		fmt.Println("Llave:", k, "Valor:", v)
+	}
+}
 
 // Procesamiento ... < Some lines that describe your function>
 func Procesamiento(input []byte) (map[string]string, error) {
