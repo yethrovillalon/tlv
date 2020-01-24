@@ -27,7 +27,7 @@ func main() {
 	}
 }
 
-// Procesamiento ... < Some lines that describe your function>
+// Procesamiento ... < Funcion encargada de procesar la cadena de caracteres de tipo TLV enviadas en byte>
 func Procesamiento(input []byte) (map[string]string, error) {
 
 	m := make(map[string]string)
