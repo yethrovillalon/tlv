@@ -9,12 +9,12 @@ import (
 
 func main() {
 
-	arg := os.Args[1]
-
-	if len(arg) <= 0 {
-		fmt.Println("Debe ingresar un argumento con el byte de entrada")
+	if len(os.Args) <= 1 || len(os.Args) > 2 {
+		fmt.Println("Debe ingresar un argumento")
 		os.Exit(1)
 	}
+
+	arg := os.Args[1]
 
 	m, err := Procesamiento([]byte(arg))
 	if err != nil {
@@ -73,7 +73,7 @@ func Procesamiento(input []byte) (map[string]string, error) {
 
 			m[tipo] = dato
 		} else {
-			return nil, errors.New("No cumple con el tipo de dato especificado")
+			return nil, errors.New("No cumple con el tipo de dato especificado (A / N)")
 		}
 	}
 
