@@ -8,5 +8,4 @@ jobs:
 
     steps: 
       - checkout 
-      - run: go build /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}/tlv.go
       - run: go test -v --bench . --benchmem ./ ...
