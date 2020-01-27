@@ -8,4 +8,4 @@ jobs:
 
     steps: 
       - checkout 
-      - run: go test -v --bench . --benchmem ./ ...
+      - run: go build tlv.go

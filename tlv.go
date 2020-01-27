@@ -45,10 +45,18 @@ func Procesamiento(input []byte) (map[string]string, error) {
 		tipo := inputSting[0:1]
 		if tipo == "A" || tipo == "N" {
 
+			if len(inputSting) < 3 {
+				return nil, errors.New("La cadena debe contener el campo")
+			}
+
 			campo := inputSting[1:3]
 			_, err1 := strconv.Atoi(campo)
 			if err1 != nil {
 				return nil, errors.New("El numero de campo no es numerico")
+			}
+
+			if len(inputSting) < 5 {
+				return nil, errors.New("La cadena debe contener el largo")
 			}
 
 			largo := inputSting[3:5]
