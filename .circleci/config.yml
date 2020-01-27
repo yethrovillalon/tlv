@@ -8,3 +8,14 @@ jobs:
 
     steps: 
       - checkout 
+      - run:
+          name: BUILD
+          command: go get -d -v ./... && go build -v ./...
+      - run:
+          name: TEST
+          command: go test -v ./...
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - build
